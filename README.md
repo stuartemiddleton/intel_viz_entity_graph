@@ -1,8 +1,7 @@
 # intel_viz_entity_graph
 Named Entity (NE) based directed graph visualization for intelligence reports
 
-Our graph visualization aims to generate small directed graphs of connected named entities (i.e. people, locations, species and organisations) with the target suspect as the root node. This automates to some degree the approach used in criminological
-analysis, where users are first identified and then posts analysed to see who is connected and what behaviours are being exhibited. Entity types are similar to the UK law enforcement and Home Office standard POLE format (People, Object, Location and Events).
+Our graph visualization aims to generate small directed graphs of connected named entities (i.e. people, locations, species and organisations) with the target suspect as the root node. This automates to some degree the approach used in criminological analysis, where users are first identified and then posts analysed to see who is connected and what behaviours are being exhibited. Entity types are similar to the UK law enforcement and Home Office standard POLE format (People, Object, Location and Events).
 
 The NE directed graph model has hyper-parameters for NE filters and the depth of the graph. Descriptions for these can be found in the configuration section.
 
@@ -10,7 +9,7 @@ The algorithm takes a set of forum posts (relevant or not) which have had their 
 
 The breadth first directed graph walk is then performed at a configurable depth (usually 2) in the forward (e.g. thread A contains post B, post B mentions entity C), backward (e.g. entity C was mentioned by post B) or both directions.
 
-Once a target suspect’s graph is generated it is visualized using a [matplotlib](https://matplotlib.org/) and [networkx](https://networkx.github.io/) visualization. Optionally graphs can be pseudonymized with entity names hashed, which is useful for publication of intelligence graph examples. To make it easier for a criminologist to process 100’s of connected entities on a graph we colour code nodes by entity type. The visualization is interactive, and can be zoomed in and panned around to explore dense data more easily
+Once a target suspect’s graph is generated it is visualized using a [matplotlib](https://matplotlib.org/) and [networkx](https://networkx.github.io/) visualization. Optionally graphs can be pseudonymized with entity names hashed, which is useful for publication of intelligence graph examples. To make it easier for a criminologist to analyse 100’s of connected entities on a graph we colour code nodes by entity type. The visualization is interactive, and can be zoomed in and panned around to explore dense data more easily.
 
 This work was supported by the Economic and Social Research Council ([FloraGuard project](http://floraguard.org/), ES/R003254/1) and UK Defence and Security Accelerator, a part of the Ministry of Defence ([CYShadowWatch project](https://www.ecs.soton.ac.uk/research/projects/1019), ACC2005442).
 
@@ -22,9 +21,11 @@ Feature suggestions and/or bug reports can be sent to {sem03}@soton.ac.uk. We do
 Stuart E. Middleton,. Anita Lavorgna, Geoff Neumann and David Whitehead. 2020. Information Extraction from the Long Tail: A Socio-Technical AI Approach for Criminology Investigations into the Online Illegal Plant Trade. In Proceedings of ACM Web Science conference (WebSci 2020). ACM, July 6–10, 2020, Southampton, United Kingdom. 4 pages. https://doi.org/10.1145/3394332.3402838
 ```
 
-# Pre-requisites (earlier versions may be suitable but are untested)
+# Pre-requisites
 
 python >= 3.7, matplotlib >= 3.1, networkx >= 2.3
+
+Earlier versions may be suitable but are untested. The software is intended to be used by someone with a basic understanding of Python so they can edit the configuration and generate a data graph JSON file.
 
 # Usage
 
@@ -46,16 +47,27 @@ The configuration is contained in an INI file whose location is passed as a comm
 
 ```
 search_depth = graph depth of connection to display e.g. 2
+
 list_direction = list of allowed directions of graph walk e.g. ['forward','backward']
+
 layout_name = networkx layout type e.g. spring, random, spectral or shell
+
 max_nodes = limit for number of nodes in visual graphs to avoid long render times e.g. 500
+
 filter_post_freq = optional minimum post/thread frequency count for nodes (can be None) e.g. None
+
 colour_map = dict of node category and node colour
+
 entity_prefix_map = dict of entity prefixes to identify node category
+
 list_pseudonymization = list of entity types that should be pseudonymized e.g. []
 ```
 
-Within the configuration INI file there are entity pattern specs to allow selection of (a) graph root nodes (b) nodes to belong to a cluster (c) nodes to allow in the graph. These all use the entity pattern spec structure described below. For (a) and (b) matching nodes will be included in the root or cluster node list. For (c) matching nodes will be included in a filter list and removed from the graph.
+Within the configuration INI file there are entity pattern specs to allow selection of
+(a) graph root nodes (b) nodes to belong to a cluster (c) nodes to allow in the graph.
+These all use the entity pattern spec structure described below. For (a) and (b) matching nodes
+will be included in the root or cluster node list. For (c) matching nodes will be included in
+a filter list and removed from the graph.
 
 ```
 {
@@ -85,7 +97,9 @@ Within the configuration INI file there are entity pattern specs to allow select
 
 # Data graph JSON structure
 
-The intelligence graph visualization expects a data graph in the following format. This will usually be programmatically generated from a combination of a [web crawler](https://github.com/darpa-i2o/memex-program-index), [parser](https://docs.python.org/3/library/html.parser.html) and named entity tagger such as [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/).
+The intelligence graph visualization expects a data graph in the following format. This will usually be
+programmatically generated from a combination of a [web crawler](https://github.com/darpa-i2o/memex-program-index), [parser](https://docs.python.org/3/library/html.parser.html)
+and named entity tagger such as [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/).
 
 ```
 {
@@ -120,10 +134,14 @@ The intelligence graph visualization expects a data graph in the following forma
   }
 }
 
-The post identifier uses the naming convention of "<website>_thread_<thread_id>_post_<post_id>". The thread and post identifier will be parsed from this name pattern and used to provide conversation post/thread nodes in the final visualization.
+The post identifier uses the naming convention of "<website>_thread_<thread_id>_post_<post_id>". The thread
+and post identifier will be parsed from this name pattern and used to provide conversation post/thread nodes
+in the final visualization.
 
-The <sentence_index> is a global index used to tie entities to a specific conversational context. This avoids graphs connecting named entity mentions using the same term in an unrelated conversational context.
+The <sentence_index> is a global index used to tie entities to a specific conversational context. This avoids
+graphs connecting named entity mentions using the same term in an unrelated conversational context.
 
-The <NER-label> will be generated by the NER tagger. For Stanford CoreNLP named entity tags include NER-PERSON, NER-LOCATION, NER-CITY, NER-STATE_OR_PROVINCE, NER-COUNTRY, NER-NATIONALITY, NER-ORGANIZATION etc.
+The <NER-label> will be generated by the NER tagger. For Stanford CoreNLP named entity tags include
+NER-PERSON, NER-LOCATION, NER-CITY, NER-STATE_OR_PROVINCE, NER-COUNTRY, NER-NATIONALITY, NER-ORGANIZATION etc.
 
 ```
