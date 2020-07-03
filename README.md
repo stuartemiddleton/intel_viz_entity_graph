@@ -37,10 +37,10 @@ py .\intel_viz.py .\example.ini .\example_data_graph.json
 # Example graph visualization
 
 one:
-![alt text](https://github.com/stuartemiddleton/example-graph.png "Example graph visualization")
+![alt text](https://github.com/stuartemiddleton/intel_viz_entity_graph/example-graph.png "Example graph visualization")
 
 two:
-![alt text](https://github.com/stuartemiddleton/example-graph.pdf "Example graph visualization")
+![alt text](https://github.com/stuartemiddleton/intel_viz_entity_graph/example-graph.pdf "Example graph visualization")
 
 # Configuration of visualization
 
