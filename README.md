@@ -4,7 +4,7 @@ Named Entity (NE) based directed graph visualization for intelligence reports
 Our graph visualization aims to generate small directed graphs of connected named entities (i.e. people, locations, species and organisations) with the target suspect as the root node. This automates to some degree the approach used in criminological
 analysis, where users are first identified and then posts analysed to see who is connected and what behaviours are being exhibited. Entity types are similar to the UK law enforcement and Home Office standard POLE format (People, Object, Location and Events).
 
-The NE directed graph model has hyper-parameters values for NE filters and the depth of the graph. These can be found in the configuration section.
+The NE directed graph model has hyper-parameters for NE filters and the depth of the graph. Descriptions for these can be found in the configuration section.
 
 The algorithm takes a set of forum posts (relevant or not) which have had their text sentences labeled using the [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/) toolkit. Mentioned entities, authors and post/thread connections are indexed, filtered and a directed graph created using a target suspect entity as a root node and a breadth first directed graph walk. Entity disambiguation is not performed, with entity names instead suffixed by their post identifier to provide a conversational context prior to aggregation for the visual graph display. This ensures entities within a common posted context are aggregated into a single graph node, whilst entities outside this context appear differentiated as separate nodes.
 
@@ -33,6 +33,14 @@ e.g.
 
 py .\intel_viz.py .\example.ini .\example_data_graph.json
 ```
+
+# Example graph visualization
+
+one:
+![alt text](https://github.com/stuartemiddleton/example-graph.png "Example graph visualization")
+
+two:
+![alt text](https://github.com/stuartemiddleton/example-graph.pdf "Example graph visualization")
 
 # Configuration of visualization
 
