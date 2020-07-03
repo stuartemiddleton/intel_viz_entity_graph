@@ -14,6 +14,8 @@ Once a target suspect’s graph is generated it is visualized using a matplotlib a
 
 This work was supported by the Economic and Social Research Council ([FloraGuard project](http://floraguard.org/), ES/R003254/1) and UK Defence and Security Accelerator, a part of the Ministry of Defence ([CYShadowWatch project](https://www.ecs.soton.ac.uk/research/projects/1019), ACC2005442).
 
+Feature suggestions and/or bug reports can be sent to {sem03}@soton.ac.uk. We do not however offer any software support beyond the examples already provided.
+
 # [Scientific publications](https://www.ecs.soton.ac.uk/people/sem03#publications)
 
 ```
