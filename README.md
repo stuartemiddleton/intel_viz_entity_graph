@@ -14,7 +14,7 @@ Once a target suspect’s graph is generated it is visualized using a matplotlib a
 
 This work was supported by the Economic and Social Research Council ([FloraGuard project](http://floraguard.org/), ES/R003254/1) and UK Defence and Security Accelerator, a part of the Ministry of Defence ([CYShadowWatch project](https://www.ecs.soton.ac.uk/research/projects/1019), ACC2005442).
 
-# Scientific [publications](https://www.ecs.soton.ac.uk/people/sem03#publications)
+# [Scientific publications](https://www.ecs.soton.ac.uk/people/sem03#publications)
 
 ```
 Stuart E. Middleton,. Anita Lavorgna, Geoff Neumann and David Whitehead. 2020. Information Extraction from the Long Tail: A Socio-Technical AI Approach for Criminology Investigations into the Online Illegal Plant Trade. In Proceedings of ACM Web Science conference (WebSci 2020). ACM, July 6–10, 2020, Southampton, United Kingdom. 4 pages. https://doi.org/10.1145/3394332.3402838
@@ -79,7 +79,7 @@ Within the configuration INI file there are entity pattern specs to allow select
 
 # Data graph JSON structure
 
-The intelligence graph visualization expects a data graph in the following format. This will usually be programmatically generated from a combination of a web crawler, parser and named entity tagger such as Stanford CoreNLP.
+The intelligence graph visualization expects a data graph in the following format. This will usually be programmatically generated from a combination of a [web crawler](https://github.com/darpa-i2o/memex-program-index), [parser](https://docs.python.org/3/library/html.parser.html) and named entity tagger such as [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/).
 
 ```
 {
