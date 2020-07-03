@@ -10,7 +10,7 @@ The algorithm takes a set of forum posts (relevant or not) which have had their 
 
 The breadth first directed graph walk is then performed at a configurable depth (usually 2) in the forward (e.g. thread A contains post B, post B mentions entity C), backward (e.g. entity C was mentioned by post B) or both directions.
 
-Once a target suspect’s graph is generated it is visualized using a matplotlib and networkx visualization. Optionally graphs can be pseudonymized with entity names hashed, which is useful for publication of intelligence graph examples. To make it easier for a criminologist to process 100’s of connected entities on a graph we colour code nodes by entity type. The visualization is interactive, and can be zoomed in and panned around to explore dense data more easily
+Once a target suspect’s graph is generated it is visualized using a [matplotlib](https://matplotlib.org/) and [networkx](https://networkx.github.io/) visualization. Optionally graphs can be pseudonymized with entity names hashed, which is useful for publication of intelligence graph examples. To make it easier for a criminologist to process 100’s of connected entities on a graph we colour code nodes by entity type. The visualization is interactive, and can be zoomed in and panned around to explore dense data more easily
 
 This work was supported by the Economic and Social Research Council ([FloraGuard project](http://floraguard.org/), ES/R003254/1) and UK Defence and Security Accelerator, a part of the Ministry of Defence ([CYShadowWatch project](https://www.ecs.soton.ac.uk/research/projects/1019), ACC2005442).
 
