@@ -23,9 +23,9 @@ Stuart E. Middleton,. Anita Lavorgna, Geoff Neumann and David Whitehead. 2020. I
 
 # Pre-requisites
 
-python >= 3.7, matplotlib >= 3.1, networkx >= 2.3
+python = 3.9, matplotlib = 3.1, networkx = 2.6.3
 
-Earlier versions may be suitable but are untested. The software is intended to be used by someone with a basic understanding of Python so they can edit the configuration and generate a data graph JSON file.
+Later versions of libs may work but have not been tested. The software is intended to be used by someone with a basic understanding of Python so they can edit the configuration and generate a data graph JSON file.
 
 # Usage
 
